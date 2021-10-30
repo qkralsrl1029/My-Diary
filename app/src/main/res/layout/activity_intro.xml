@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Intro">
+
+    <View
+        android:id="@+id/background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#202020"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="191dp"
+        android:layout_height="241dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/background"
+        app:srcCompat="@drawable/icon" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/effect7"
+            android:layout_width="52dp"
+            android:layout_height="91dp"
+            android:layout_marginStart="96dp"
+            android:layout_marginTop="252dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/effect" />
+
+        <ImageView
+            android:id="@+id/effect10"
+            android:layout_width="52dp"
+            android:layout_height="91dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="153dp"
+            app:layout_constraintStart_toEndOf="@+id/effect1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/effect" />
+
+        <ImageView
+            android:id="@+id/effect"
+            android:layout_width="52dp"
+            android:layout_height="91dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="56dp"
+            app:layout_constraintStart_toEndOf="@+id/effect3"
+            app:layout_constraintTop_toBottomOf="@+id/effect9"
+            app:srcCompat="@drawable/effect" />
+
+        <ImageView
+            android:id="@+id/effect5"
+            android:layout_width="52dp"
+            android:layout_height="91dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="347dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/effect1"
+            app:srcCompat="@drawable/effect" />
+
+        <ImageView
+            android:id="@+id/effect4"
+            android:layout_width="52dp"
+            android:layout_height="91dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="170dp"
+            app:layout_constraintStart_toEndOf="@+id/effect6"
+            app:layout_constraintTop_toBottomOf="@+id/effect"
+            app:srcCompat="@drawable/effect" />
+
+        <ImageView
+            android:id="@+id/effect8"
+            android:layout_width="52dp"
+            android:layout_height="91dp"
+            android:layout_marginStart="248dp"
+            android:layout_marginTop="21dp"
+            app:layout_constraintStart_toEndOf="@+id/effect5"
+            app:layout_constraintTop_toBottomOf="@+id/effect4"
+            app:srcCompat="@drawable/effect" />
+
+        <ImageView
+            android:id="@+id/effect6"
+            android:layout_width="52dp"
+            android:layout_height="91dp"
+            android:layout_marginStart="57dp"
+            android:layout_marginTop="228dp"
+            app:layout_constraintStart_toEndOf="@+id/effect2"
+            app:layout_constraintTop_toBottomOf="@+id/effect3"
+            app:srcCompat="@drawable/effect" />
+
+        <ImageView
+            android:id="@+id/effect1"
+            android:layout_width="52dp"
+            android:layout_height="91dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="76dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/effect" />
+
+        <ImageView
+            android:id="@+id/effect2"
+            android:layout_width="52dp"
+            android:layout_height="91dp"
+            android:layout_marginStart="110dp"
+            android:layout_marginTop="62dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/effect7"
+            app:srcCompat="@drawable/effect" />
+
+        <ImageView
+            android:id="@+id/effect9"
+            android:layout_width="52dp"
+            android:layout_height="91dp"
+            android:layout_marginStart="217dp"
+            android:layout_marginTop="42dp"
+            app:layout_constraintStart_toEndOf="@+id/effect1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/effect" />
+
+        <ImageView
+            android:id="@+id/effect3"
+            android:layout_width="52dp"
+            android:layout_height="91dp"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="153dp"
+            app:layout_constraintStart_toEndOf="@+id/effect10"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/effect" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
