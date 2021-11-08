@@ -18,8 +18,6 @@ public class Intro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
-        ViewGroup viewGroup=(ViewGroup) findViewById(R.id.group);
-
         View imageView=findViewById(R.id.background);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,14 +26,6 @@ public class Intro extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        for(int i=0;i<viewGroup.getChildCount();i++)
-        {
-            ImageView effect=(ImageView) viewGroup.getChildAt(i);
-            ObjectAnimator animation = ObjectAnimator.ofFloat(effect, "translationY", 20f*i);
-            animation.setDuration(2000);
-            animation.start();
-        }
 
     }
 }

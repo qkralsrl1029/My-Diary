@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         else
         {
             backPressedTime = tempTime;
-            Toast.makeText(getApplicationContext(), "한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "오늘은 그만 펜을 내려둘까요?", Toast.LENGTH_SHORT).show();
         }
     }
 }

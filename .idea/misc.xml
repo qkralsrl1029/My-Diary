@@ -4,10 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/simon/GitHub/My-Diary/app/src/main/res/font/titlefont.xml" value="0.3963541666666667" />
-        <entry key="..\:/Users/simon/GitHub/My-Diary/app/src/main/res/layout/activity_intro.xml" value="0.22" />
+        <entry key="..\:/Users/simon/GitHub/My-Diary/app/src/main/res/layout/activity_intro.xml" value="0.38481449525452976" />
         <entry key="..\:/Users/simon/GitHub/My-Diary/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Users/simon/GitHub/My-Diary/app/src/main/res/layout/fragment_record.xml" value="0.33" />
-        <entry key="..\:/Users/simon/GitHub/My-Diary/app/src/main/res/layout/fragment_view.xml" value="0.19739583333333333" />
+        <entry key="..\:/Users/simon/GitHub/My-Diary/app/src/main/res/layout/fragment_record.xml" value="0.25" />
+        <entry key="..\:/Users/simon/GitHub/My-Diary/app/src/main/res/layout/fragment_view.xml" value="0.25" />
         <entry key="..\:/Users/simon/GitHub/My-Diary/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/simon/GitHub/My-Diary/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.38229166666666664" />
       </map>
