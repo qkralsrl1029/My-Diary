@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.Group;
 
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,11 +20,17 @@ public class Intro extends AppCompatActivity {
 
         ViewGroup viewGroup=(ViewGroup) findViewById(R.id.group);
 
-
+        View imageView=findViewById(R.id.background);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Intro.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         for(int i=0;i<viewGroup.getChildCount();i++)
         {
-            Log.d("effect",Integer.toString(i));
             ImageView effect=(ImageView) viewGroup.getChildAt(i);
             ObjectAnimator animation = ObjectAnimator.ofFloat(effect, "translationY", 20f*i);
             animation.setDuration(2000);

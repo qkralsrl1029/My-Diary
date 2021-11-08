@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.MyDiary" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="android:fontFamily">@font/broadcast_matter</item>
+        <item name="android:fontFamily">@font/kaushan</item>
         <item name="colorPrimary">@color/title_black</item>
         <item name="colorPrimaryVariant">@color/title_black</item>
         <item name="colorOnPrimary">@color/white</item>
