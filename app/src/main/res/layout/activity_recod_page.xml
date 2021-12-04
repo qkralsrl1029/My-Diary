@@ -49,7 +49,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_margin="6dp"
-            android:background="@drawable/img_boring"
+            android:background="@drawable/img_sad"
             app:backgroundTint="?android:attr/panelBackground"
             app:backgroundTintMode="add" />
 
@@ -58,7 +58,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_margin="6dp"
-            android:background="@drawable/img_loved"
+            android:background="@drawable/img_boring"
             app:backgroundTint="?android:attr/panelBackground"
             app:backgroundTintMode="add" />
 
@@ -67,7 +67,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_margin="6dp"
-            android:background="@drawable/img_sad"
+            android:background="@drawable/img_surprised"
             app:backgroundTint="?android:attr/panelBackground"
             app:backgroundTintMode="add" />
 
@@ -76,7 +76,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_margin="6dp"
-            android:background="@drawable/img_surprised"
+            android:background="@drawable/img_loved"
             app:backgroundTint="?android:attr/panelBackground"
             app:backgroundTintMode="add" />
 
