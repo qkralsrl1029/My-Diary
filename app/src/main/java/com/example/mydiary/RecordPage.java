@@ -30,6 +30,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.snackbar.Snackbar;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.normal.TedPermission;
+import com.shashank.sony.fancytoastlib.FancyToast;
 
 import java.util.List;
 
@@ -229,12 +230,12 @@ public class RecordPage extends AppCompatActivity {
     PermissionListener permissionlistener = new PermissionListener() {
         @Override
         public void onPermissionGranted() {
-            Toast.makeText(RecordPage.this, "Permission Granted", Toast.LENGTH_SHORT).show();
+            FancyToast.makeText(getApplicationContext(), "Permission Granted",FancyToast.LENGTH_LONG,FancyToast.INFO,false).show();
         }
 
         @Override
         public void onPermissionDenied(List<String> deniedPermissions) {
-            Toast.makeText(RecordPage.this, "Permission Denied\n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
+            FancyToast.makeText(getApplicationContext(), "Permission Denied",FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();
         }
     };
 
