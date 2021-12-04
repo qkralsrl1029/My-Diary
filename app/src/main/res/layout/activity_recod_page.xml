@@ -1,11 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".RecodPage">
+    tools:context=".RecordPage">
 
-    
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="12dp"
+        tools:context=".RecordPage" />
+
+
+    <Button
+        android:id="@+id/imgLoadBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:fontFamily="@font/binggrae"
+        android:text="오늘 찍은 인생샷 :)"
+        android:textSize="20dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#DCDCDC" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnSmile"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/img_happy"
+            app:backgroundTint="?android:attr/panelBackground"
+            app:backgroundTintMode="add" />
+
+        <Button
+            android:id="@+id/btnSad"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/img_boring"
+            app:backgroundTint="?android:attr/panelBackground"
+            app:backgroundTintMode="add" />
+
+        <Button
+            android:id="@+id/btnBoring"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/img_loved"
+            app:backgroundTint="?android:attr/panelBackground"
+            app:backgroundTintMode="add" />
+
+        <Button
+            android:id="@+id/btnSurprised"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/img_sad"
+            app:backgroundTint="?android:attr/panelBackground"
+            app:backgroundTintMode="add" />
+
+        <Button
+            android:id="@+id/btnLoved"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/img_surprised"
+            app:backgroundTint="?android:attr/panelBackground"
+            app:backgroundTintMode="add" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#DCDCDC" />
+
+    <EditText
+        android:id="@+id/recoedText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:fontFamily="@font/binggrae"
+        android:gravity="top"
+        android:hint="  기억할만한 일이 있었나요 ?"
+        android:inputType="textPersonName"
+        android:textSize="20sp" />
+
+
+    <Button
+        android:id="@+id/saveBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/binggrae"
+        android:text="작성 완료!"
+        android:textSize="20dp" />
+
 
 </LinearLayout>

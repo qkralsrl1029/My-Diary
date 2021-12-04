@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +38,7 @@ public class RecordFragment extends Fragment {
 
     private void record()
     {
-        Intent intent=new Intent(getContext(),RecodPage.class);
+        Intent intent=new Intent(getContext(), RecordPage.class);
         startActivity(intent);
     }
 }
