@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/simon/GitHub/My-Diary/app/src/main/res/drawable/round_bg.xml" value="0.18177083333333333" />
         <entry key="..\:/Users/simon/GitHub/My-Diary/app/src/main/res/font/hanguelfont.xml" value="0.3963541666666667" />
         <entry key="..\:/Users/simon/GitHub/My-Diary/app/src/main/res/font/titlefont.xml" value="0.3963541666666667" />
         <entry key="..\:/Users/simon/GitHub/My-Diary/app/src/main/res/layout/activity_intro.xml" value="0.38481449525452976" />
         <entry key="..\:/Users/simon/GitHub/My-Diary/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Users/simon/GitHub/My-Diary/app/src/main/res/layout/activity_recod_page.xml" value="0.25" />
+        <entry key="..\:/Users/simon/GitHub/My-Diary/app/src/main/res/layout/activity_recod_page.xml" value="0.33" />
+        <entry key="..\:/Users/simon/GitHub/My-Diary/app/src/main/res/layout/dialog_diary.xml" value="0.25" />
         <entry key="..\:/Users/simon/GitHub/My-Diary/app/src/main/res/layout/fragment_record.xml" value="0.25" />
         <entry key="..\:/Users/simon/GitHub/My-Diary/app/src/main/res/layout/fragment_view.xml" value="0.25" />
         <entry key="..\:/Users/simon/GitHub/My-Diary/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.38229166666666664" />

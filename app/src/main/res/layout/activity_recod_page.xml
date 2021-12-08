@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="12dp"
     android:orientation="vertical"
     tools:context=".RecordPage">
 
@@ -15,15 +16,28 @@
         android:layout_margin="12dp"
         tools:context=".RecordPage" />
 
-
-    <Button
-        android:id="@+id/imgLoadBtn"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="12dp"
-        android:fontFamily="@font/binggrae"
-        android:text="오늘 찍은 인생샷 :)"
-        android:textSize="20dp" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/imgLoadBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:fontFamily="@font/binggrae"
+            android:text="오늘 찍은 인생샷 :)"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/imgName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:textSize="16sp" />
+
+    </LinearLayout>
 
     <View
         android:layout_width="match_parent"

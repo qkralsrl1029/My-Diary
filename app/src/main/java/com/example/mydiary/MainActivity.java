@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
+import com.shashank.sony.fancytoastlib.FancyToast;
 
 import java.util.ArrayList;
 
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         else
         {
             backPressedTime = tempTime;
-            Toast.makeText(getApplicationContext(), "오늘은 그만 펜을 내려둘까요?", Toast.LENGTH_SHORT).show();
+            FancyToast.makeText(getApplicationContext(), "오늘은 그만 펜을 내려둘까요?",FancyToast.LENGTH_LONG,FancyToast.DEFAULT,false).show();
         }
     }
 }

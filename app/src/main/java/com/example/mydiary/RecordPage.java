@@ -1,22 +1,30 @@
 package com.example.mydiary;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -32,11 +40,14 @@ import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.normal.TedPermission;
 import com.shashank.sony.fancytoastlib.FancyToast;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 public class RecordPage extends AppCompatActivity {
 
     Button imageLoadBtn;
+    TextView imgName;
     Button saveBtn;
     EditText recordText;
     Button emtHappy;
@@ -51,11 +62,16 @@ public class RecordPage extends AppCompatActivity {
     boolean initMap=false;
     MarkerOptions markerOptions;
 
-    boolean isHappy=false;
-    boolean isSad=false;
-    boolean isBoring=false;
-    boolean isSurprised=false;
-    boolean isLoved=false;
+    int isHappy=0;
+    int isSad=0;
+    int isBoring=0;
+    int isSurprised=0;
+    int isLoved=0;
+
+    DatabaseHelper dbHelper;
+    SQLiteDatabase sqLiteDb;
+
+    private final int GET_GALLERY_IMAGE = 200;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +79,7 @@ public class RecordPage extends AppCompatActivity {
         setContentView(R.layout.activity_recod_page);
 
         imageLoadBtn=findViewById(R.id.imgLoadBtn);
+        imgName=findViewById(R.id.imgName);
         saveBtn=findViewById(R.id.saveBtn);
         recordText=findViewById(R.id.recoedText);
         emtHappy=findViewById(R.id.btnSmile);
@@ -70,6 +87,10 @@ public class RecordPage extends AppCompatActivity {
         emtBoring=findViewById(R.id.btnBoring);
         emtSurprised=findViewById(R.id.btnSurprised);
         emtLoved=findViewById(R.id.btnLoved);
+        markerOptions=new MarkerOptions();
+
+        dbHelper=new DatabaseHelper(getApplicationContext());
+        sqLiteDb=dbHelper.getWritableDatabase();
 
         TedPermission.create()
                 .setPermissionListener(permissionlistener)
@@ -102,16 +123,25 @@ public class RecordPage extends AppCompatActivity {
             }
         });
 
+        imageLoadBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent. setDataAndType(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+                startActivityForResult(intent,GET_GALLERY_IMAGE);
+            }
+        });
+
         emtHappy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isHappy){
+                if(isHappy==1){
                     emtHappy.setBackgroundResource(R.drawable.img_happy);
-                    isHappy=false;
+                    isHappy=0;
                 }
                 else{
                     emtHappy.setBackgroundResource(R.drawable.img_happy_selected);
-                    isHappy=true;
+                    isHappy=1;
                 }
             }
         });
@@ -119,13 +149,13 @@ public class RecordPage extends AppCompatActivity {
         emtSad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isSad){
+                if(isSad==1){
                     emtSad.setBackgroundResource(R.drawable.img_sad);
-                    isSad=false;
+                    isSad=0;
                 }
                 else{
                     emtSad.setBackgroundResource(R.drawable.img_sad_selected);
-                    isSad=true;
+                    isSad=1;
                 }
             }
         });
@@ -133,13 +163,13 @@ public class RecordPage extends AppCompatActivity {
         emtBoring.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isBoring){
+                if(isBoring==1){
                     emtBoring.setBackgroundResource(R.drawable.img_boring);
-                    isBoring=false;
+                    isBoring=0;
                 }
                 else{
                     emtBoring.setBackgroundResource(R.drawable.img_boring_selected);
-                    isBoring=true;
+                    isBoring=1;
                 }
             }
         });
@@ -147,13 +177,13 @@ public class RecordPage extends AppCompatActivity {
         emtSurprised.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isSurprised){
+                if(isSurprised==1){
                     emtSurprised.setBackgroundResource(R.drawable.img_surprised);
-                    isSurprised=false;
+                    isSurprised=0;
                 }
                 else{
                     emtSurprised.setBackgroundResource(R.drawable.img_surprised_selected);
-                    isSurprised=true;
+                    isSurprised=1;
                 }
             }
         });
@@ -161,13 +191,13 @@ public class RecordPage extends AppCompatActivity {
         emtLoved.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isLoved){
+                if(isLoved==1){
                     emtLoved.setBackgroundResource(R.drawable.img_loved);
-                    isLoved=false;
+                    isLoved=0;
                 }
                 else{
                     emtLoved.setBackgroundResource(R.drawable.img_loved_selected);
-                    isLoved=true;
+                    isLoved=1;
                 }
             }
         });
@@ -175,12 +205,25 @@ public class RecordPage extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                FancyToast.makeText(getApplicationContext(),"저장 완료!",FancyToast.LENGTH_LONG,FancyToast.SUCCESS,false);
                 saveData();
             }
         });
     }
 
-    
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == GET_GALLERY_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
+
+            Uri selectedImageUri = data.getData();
+            //imageview.setImageURI(selectedImageUri);
+            imgName.setText(selectedImageUri.toString());
+        }
+    }
+
+
     //frame layout으로 먼저 구글맵 띄우고 설정 위치로 카메라 고정 후 그 위에 이미지 뷰를 겹쳐서 지도 위에 이미지가 있는것처럼 구성
     //이미지를 버튼으로 만들어서(디폴트는 그냥 구글맵 이미지 캡쳐본) 선택 완료하면 마커캡쳐이미지로 변경, 그 위에 사용자 업로드 이미지 setvisible true
 
@@ -242,11 +285,29 @@ public class RecordPage extends AppCompatActivity {
     private void saveData(){
         LatLng position=markerOptions.getPosition();
         String text=recordText.getText().toString();
-        boolean flagHappy=isHappy;
-        boolean flagSad=isSad;
-        boolean flagSurprised=isSurprised;
-        boolean flagBoring=isBoring;
-        boolean flagLoved=isLoved;
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String date = format.format(Calendar.getInstance().getTime());
+
+        ContentValues values = new ContentValues();
+        values.put(DatabaseHelper.PRIMARY_KEY, date);
+        values.put(DatabaseHelper.POSITION_X, position.longitude);
+        values.put(DatabaseHelper.POSITION_Y, position.latitude);
+        values.put(DatabaseHelper.IS_HAPPY, isHappy);
+        values.put(DatabaseHelper.IS_BORING, isBoring);
+        values.put(DatabaseHelper.IS_LOVED, isLoved);
+        values.put(DatabaseHelper.IS_SURPRISED, isSurprised);
+        values.put(DatabaseHelper.IS_SAD, isSad);
+        values.put(DatabaseHelper.BODY, text);
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId = sqLiteDb.insert(DatabaseHelper.TABLE_NAME, null, values);
+        if(newRowId==-1)
+            Log.e("DB Error","data insertion error");
+        else
+            Log.d("getDay",date);
+
+        FancyToast.makeText(getApplicationContext(), "작성 완료 !",FancyToast.LENGTH_LONG,FancyToast.DEFAULT,false).show();
+        finish();
     }
 }
 
