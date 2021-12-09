@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/round_bg">
+    android:background="@drawable/round_bg"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/diaryTitle"
@@ -14,12 +14,24 @@
         android:text="TextView"
         android:textSize="24sp" />
 
-    <fragment
-        android:id="@+id/diaryMap"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_margin="12dp" />
+        android:layout_height="250dp">
+
+        <fragment
+            android:id="@+id/diaryMap"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="12dp" />
+
+        <ImageView
+            android:id="@+id/dialogImage"
+            android:layout_width="102dp"
+            android:layout_height="75dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp" />
+    </FrameLayout>
 
     <View
         android:layout_width="match_parent"

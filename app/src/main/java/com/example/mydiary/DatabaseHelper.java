@@ -19,6 +19,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String IS_SURPRISED="surprised";
     public static final String IS_LOVED="loved";
     public static final String BODY="body";
+    public static final String IMAGE="uri";
 
     //for internal DB
     private static final String SQL_CREATE_ENTRIES =
@@ -31,6 +32,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     IS_BORING + " INTEGER," +
                     IS_SURPRISED + " INTEGER," +
                     IS_LOVED + " INTEGER," +
+                    IMAGE + " TEXT," +
                     BODY + " TEXT)";
 
     private static final String SQL_DELETE_ENTRIES =
